@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Amr2002
+      MYSQL_DATABASE: example
+      MYSQL_USER: AmrAdel_2002
+      MYSQL_PASSWORD: 1234
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  backend:
+    image: amradel2002/db:latest
+    container_name: backend2
+    restart: always
+    environment:
+      DB_HOST: mysql
+      DB_USER: AmrAdel_2002
+      DB_PASSWORD: 1234
+      DB_NAME: example
+    depends_on:
+      - mysql
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+
+  proxy:
+    image: amradel2002/proxy:latest
+    container_name: proxy2
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "443:443"
+    networks:
+      - app-network
+
+volumes:
+  db_data:
+
+networks:
+  app-network:
+    driver: bridge
