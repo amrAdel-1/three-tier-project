@@ -19,32 +19,6 @@ This project demonstrates a production-style **3-tier web architecture** with:
 
 It supports both **Docker Compose** for local testing and **Kubernetes** for production-like deployment.
 
----
-
-## 📁 File Structure
-├── backend
-│   ├── Dockerfile
-│   ├── go.mod
-│   ├── go.sum
-│   ├── main.go
-├── k8s
-│   ├── backend_deployment.yaml
-│   ├── backend_service.yaml
-│   ├── database_deployment.yaml
-│   ├── db-data-pvc.yaml
-│   ├── db-data-pv.yaml
-│   ├── db-secret.yaml
-│   ├── db-service.yaml
-│   ├── proxy_deployment.yaml
-│   ├── proxy_nodeport.yaml
-│   └── README.md
-├── nginx
-│   ├── Dockerfile
-│   ├── generate-ssl.sh
-│   ├── nginx.conf
-│   └── README.md
-└── README.md
-├── docker-compose.yaml
 
 ## 🧱 Components
 
