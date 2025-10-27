@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/amrAdel-1/three-tier-project.git'
+                git branch: 'nodejs-app', url: 'https://github.com/amrAdel-1/three-tier-project.git'
             }
         }
 
@@ -16,7 +16,7 @@ pipeline {
 
         stage('Run Container') {
             steps {
-                sh 'docker run -d -p 3000:3000 --name nodejs nodejs-app || true'
+                sh 'docker run -d -p 3000:3000 --name nodejs nodejs-app'
             }
         }
     }
